@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dlf-player-cache-v2';
+const CACHE_NAME = 'dlf-player-cache-v3';
 const ASSETS = [
   './',
   './index.html',
