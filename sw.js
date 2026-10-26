@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dlf-player-cache-v1';
+const CACHE_NAME = 'dlf-player-cache-v2';
 const ASSETS = [
   './',
   './index.html',
@@ -29,16 +29,11 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  const url = event.request.url;
-  
-  if (url.includes('sslstream.dlf.de') || url.includes('api/nightingale')) {
+  if (event.request.url.includes('sslstream.dlf.de')) {
     return;
   }
-
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
+    caches.match(event.request).then((response) => response || fetch(event.request))
   );
-  
+
 });
